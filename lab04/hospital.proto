@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+message Person {
+	int32 Id = 1;
+	string FirstName = 2;
+	string LastName = 3;
+}
+
+message Parameter {
+	string Name = 1;
+	float Value = 2;
+	string Unit = 3;
+}
+
+message ExaminationResult {
+	string Date = 1;
+	string Commisioner = 2;
+	Person Person = 3;
+	repeated Parameter Parameters = 4;
+}
+
+message AddExaminationReturnMsg {
+	bool Retval = 1;
+}
+
+service Hospital {
+	rpc AddExamination(ExaminationResult) returns (AddExaminationReturnMsg) {}
+	rpc GetExamination(ExaminationResult) returns (stream ExaminationResult) {}	
+}

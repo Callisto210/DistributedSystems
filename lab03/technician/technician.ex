@@ -1,0 +1,1 @@
+Technician.start(System.argv)
